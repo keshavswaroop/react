@@ -1,12 +1,21 @@
 import React, { useState } from "react";
 
 export default function TextForm(p) {
-  const buttonClicked = () => {
+  const buttonClickedUpperCase = () => {
     console.log("Uppercase Button was Clicked");
     let newText = text.toUpperCase();
     setText(newText);
   };
 
+  const buttonClickedLowerCase = () => {
+    console.log("Uppercase Button was Clicked");
+    let newText = text.toUpperCase();
+    setText(newText);
+  };
+
+  const buttonClickedClear = () => {
+    setText("");
+  };
   const textChanged = (event) => {
     console.log("The additional text is entered");
     setText(event.target.value);
@@ -23,9 +32,31 @@ export default function TextForm(p) {
           rows="8"
           onChange={textChanged}
         ></textarea>
-        <button className="btn btn-primary" onClick={buttonClicked}>
+        <button
+          className="btn btn-primary mx-3"
+          onClick={buttonClickedUpperCase}
+        >
           Convert to Uppercase
         </button>
+        <button
+          className="btn btn-primary mx-3"
+          onClick={buttonClickedLowerCase}
+        >
+          Convert to LowerCase
+        </button>
+        <button className="btn btn-primary mx-3" onClick={buttonClickedClear}>
+          Clear
+        </button>
+        <div className="component">
+          <h3>Text Summary</h3>
+          <p>
+            {text.split(" ").length} words and {text.length} characters
+          </p>
+          <p className="textSummary">
+            <h3>Text Preview</h3>
+            {text}
+          </p>
+        </div>
       </div>
     </>
   );
